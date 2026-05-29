@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dp56l7pbomsi6"]
+
+[ext_resource type="Script" uid="uid://dvbgwk6510mh4" path="res://src/resources/entities/player/player.gd" id="1_v4rts"]
+[ext_resource type="PackedScene" uid="uid://cmdiymil0hyq1" path="res://src/scenes/ui/base_button.tscn" id="2_hwyk6"]
+[ext_resource type="Resource" uid="uid://c3n43lwg6ok8r" path="res://src/resources/entities/player/player_data.tres" id="2_v4rts"]
+
+[node name="Player" type="Node2D" unique_id=185920088 node_paths=PackedStringArray("sprite", "name_label")]
+script = ExtResource("1_v4rts")
+base_action_button = ExtResource("2_hwyk6")
+sprite = NodePath("Sprite2D")
+name_label = NodePath("Label")
+data = ExtResource("2_v4rts")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=492343174]
+
+[node name="Label" type="Label" parent="." unique_id=988850462]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Name"

@@ -1,0 +1,67 @@
+Idea
+- not slay the spire
+- half-angel that just defeated Satan and goes to Heaven
+
+Style
+- biopunk hell
+- diablo-like ui
+- frankensteined pictures
+
+Features
+- turn-based combat
+- progression through rng rooms
+- two currencies - gold and evil thingy
+
+Rooms
+- combat
+- shop
+- heal/bonfire
+- events (?)
+
+Combat
+- attacks, skills and buffs
+- items with various effects
+- energy based, like in card games
+
+-----
+
+Todo
+- leave everything in the main scene and just show/hide nodes
+- base action class -> atk, buff and skill
+- item/equipment class
+- ui theme
+- hud
+- shop
+- events
+
+Doing
+- base entity class -> max health, base damage, sprite
+- combat
+
+Done
+> 05-25
+- project setup
+- base folder structure
+
+> 05-26
+- basic action class resource
+- basic entity class resource
+- basic entity node
+
+> 05-27
+- entity data / entity stats
+
+> 05-28
+- base UI
+- player/enemy class
+- add button ui
+
+> 05-29
+
+> 05-30
+
+> 05-31
+
+> 06-01
+
+> 06-02

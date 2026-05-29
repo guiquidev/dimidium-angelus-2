@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EntityData" format=3 uid="uid://d2urp0crbl13u"]
+
+[ext_resource type="Script" uid="uid://dc6prdiklmywd" path="res://src/resources/actions/action.gd" id="1_6pmwq"]
+[ext_resource type="Script" uid="uid://bnj4qqvshudod" path="res://src/resources/entities/entity_data.gd" id="1_xxug0"]
+[ext_resource type="Texture2D" uid="uid://b3hbuy08q3bqx" path="res://src/assets/angel_placeholder.png" id="2_5o5rw"]
+[ext_resource type="Script" uid="uid://dojbtr0wvdk1m" path="res://src/resources/entities/entity_stats.gd" id="3_5o5rw"]
+
+[sub_resource type="Resource" id="Resource_6pmwq"]
+script = ExtResource("3_5o5rw")
+max_health = 10
+base_damage = 1
+metadata/_custom_type_script = "uid://dojbtr0wvdk1m"
+
+[resource]
+script = ExtResource("1_xxug0")
+name = "Placeholder Enemy"
+sprite = ExtResource("2_5o5rw")
+stats = SubResource("Resource_6pmwq")
+metadata/_custom_type_script = "uid://bnj4qqvshudod"
