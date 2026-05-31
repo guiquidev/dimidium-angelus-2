@@ -1,21 +1,26 @@
 [gd_scene format=3 uid="uid://b3p3pdyt1xblc"]
 
 [ext_resource type="Script" uid="uid://d1qedop3pjthc" path="res://src/resources/entities/enemies/enemy.gd" id="1_e1bd7"]
-[ext_resource type="Resource" uid="uid://d2urp0crbl13u" path="res://src/resources/entities/enemies/placeholder_enemy.tres" id="2_43hrp"]
 
 [node name="Enemy" type="Node2D" unique_id=2039990916 node_paths=PackedStringArray("sprite", "name_label")]
 script = ExtResource("1_e1bd7")
 sprite = NodePath("Sprite2D")
 name_label = NodePath("Name")
-data = ExtResource("2_43hrp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=696565438]
 
 [node name="Name" type="Label" parent="." unique_id=1078215186]
-offset_left = -24.0
-offset_top = -15.0
-offset_right = 23.0
-offset_bottom = 8.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -11.5
+offset_right = 23.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "Name"
 horizontal_alignment = 1
 vertical_alignment = 1

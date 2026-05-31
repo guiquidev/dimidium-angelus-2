@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://n3gwt2751va7"]
+
+[ext_resource type="Script" uid="uid://dllo88kdwf30o" path="res://src/resources/entities/player/player_ui_manager.gd" id="1_2f4vm"]
+[ext_resource type="PackedScene" uid="uid://cmdiymil0hyq1" path="res://src/scenes/ui/base_button.tscn" id="2_qpnqj"]
+
+[node name="PlayerUIManager" type="Node" unique_id=912138795]
+script = ExtResource("1_2f4vm")
+base_action_button = ExtResource("2_qpnqj")

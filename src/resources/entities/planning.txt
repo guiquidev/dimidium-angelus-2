@@ -27,16 +27,16 @@ Combat
 
 Todo
 - leave everything in the main scene and just show/hide nodes
-- base action class -> atk, buff and skill
+- combat
 - item/equipment class
 - ui theme
 - hud
 - shop
 - events
+- backgrounds
 
 Doing
-- base entity class -> max health, base damage, sprite
-- combat
+- room generation
 
 Done
 > 05-25
@@ -57,8 +57,13 @@ Done
 - add button ui
 
 > 05-29
+- action resolver
+- layout adjustments
+- entity signals
 
 > 05-30
+- base action class -> atk, buff and skill
+- base entity class -> max health, base damage, sprite
 
 > 05-31
 

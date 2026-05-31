@@ -1,9 +1,10 @@
 extends Resource
 class_name Action
 
-@export var name: String
-@export var type: Enums.ActionType
-@export var target: Enums.ActionTarget
-@export var strength: int
-@export var next_action: Action
-@export var icon: Texture2D
+
+func execute(origin: Entity, target: Entity, action_target: Enums.ActionTarget, strength: int):
+	print("Action not implemented")
+	print("ActionTargetType: ", action_target)
+	print("Origin: ", origin.data.name)
+	print("Target: ", target.data.name)
+	print("Strength: ", strength)

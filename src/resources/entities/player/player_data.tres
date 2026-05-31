@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="EntityData" format=3 uid="uid://c3n43lwg6ok8r"]
 
-[ext_resource type="Script" uid="uid://dc6prdiklmywd" path="res://src/resources/actions/action.gd" id="1_a3o70"]
+[ext_resource type="Script" uid="uid://dc6prdiklmywd" path="res://src/resources/actions/action_data.gd" id="1_a3o70"]
 [ext_resource type="Script" uid="uid://bnj4qqvshudod" path="res://src/resources/entities/entity_data.gd" id="1_gfj1l"]
 [ext_resource type="Texture2D" uid="uid://b3hbuy08q3bqx" path="res://src/assets/angel_placeholder.png" id="2_bvqy3"]
-[ext_resource type="Resource" uid="uid://cx27fnsl7ldj6" path="res://src/resources/actions/attacks/placeholder_attack.tres" id="2_fy3hq"]
+[ext_resource type="Resource" uid="uid://cx27fnsl7ldj6" path="res://src/resources/actions/attacks/basic_attack/basic_attack_data.tres" id="2_fy3hq"]
 [ext_resource type="Script" uid="uid://dojbtr0wvdk1m" path="res://src/resources/entities/entity_stats.gd" id="3_a3o70"]
 
 [sub_resource type="Resource" id="Resource_fy3hq"]
@@ -17,5 +17,5 @@ script = ExtResource("1_gfj1l")
 name = "Player"
 sprite = ExtResource("2_bvqy3")
 stats = SubResource("Resource_fy3hq")
-actions = Array[ExtResource("1_a3o70")]([ExtResource("2_fy3hq")])
+actions_data = Array[ExtResource("1_a3o70")]([ExtResource("2_fy3hq")])
 metadata/_custom_type_script = "uid://bnj4qqvshudod"

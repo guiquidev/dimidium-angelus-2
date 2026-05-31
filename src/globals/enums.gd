@@ -1,18 +1,21 @@
 extends Node
 
-#enum Example {
-	#ITEM_A,
-	#ITEM_B,
-#}
-
 enum ActionType {
 	ATTACK,
 	SKILL,
-	BUFF
+	BUFF,
 }
 
 enum ActionTarget {
 	SELF,
 	OTHER,
-	BOTH
+	BOTH,
+}
+
+enum RoomType {
+	COMBAT,
+	SHOP,
+	HEAL,
+	EVENT,
+	OTHER,
 }
