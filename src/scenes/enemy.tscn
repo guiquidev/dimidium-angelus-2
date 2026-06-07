@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://b3p3pdyt1xblc"]
 
 [ext_resource type="Script" uid="uid://d1qedop3pjthc" path="res://src/resources/entities/enemies/enemy.gd" id="1_e1bd7"]
+[ext_resource type="PackedScene" uid="uid://dnqo6rslvcxlo" path="res://src/scenes/ui/description_panel.tscn" id="2_43hrp"]
+[ext_resource type="Theme" uid="uid://csqkbn2ap2ti0" path="res://src/resources/ui/ui_theme.tres" id="2_x0mr8"]
 
-[node name="Enemy" type="Node2D" unique_id=2039990916 node_paths=PackedStringArray("sprite", "name_label")]
+[node name="Enemy" type="Node2D" unique_id=2039990916 node_paths=PackedStringArray("description_panel", "sprite", "name_label")]
 script = ExtResource("1_e1bd7")
+description_panel = NodePath("Panel")
 sprite = NodePath("Sprite2D")
 name_label = NodePath("Name")
 
@@ -21,6 +24,14 @@ offset_right = 23.5
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_x0mr8")
 text = "Name"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Panel" parent="." unique_id=1111386767 instance=ExtResource("2_43hrp")]
+offset_left = -125.0
+offset_top = -250.0
+offset_right = 125.0
+offset_bottom = 50.0
+hover_description = "Enemy"

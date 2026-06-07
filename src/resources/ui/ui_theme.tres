@@ -1,0 +1,59 @@
+[gd_resource type="Theme" format=3 uid="uid://csqkbn2ap2ti0"]
+
+[ext_resource type="Texture2D" uid="uid://bmuj7lpaqr4gk" path="res://src/assets/img/gravestone_border.png" id="1_6y3gm"]
+[ext_resource type="Texture2D" uid="uid://datsq1hn4vlae" path="res://src/assets/img/throne_border.png" id="1_c41xj"]
+[ext_resource type="FontFile" uid="uid://c48h8e5c8tlm2" path="res://src/assets/fonts/Essential.ttf" id="3_6y3gm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6y3gm"]
+texture = ExtResource("1_6y3gm")
+texture_margin_left = 10.0
+texture_margin_top = 16.0
+texture_margin_right = 10.0
+texture_margin_bottom = 7.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h6xhg"]
+texture = ExtResource("1_6y3gm")
+texture_margin_left = 10.0
+texture_margin_top = 16.0
+texture_margin_right = 10.0
+texture_margin_bottom = 7.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.8920336, 0.8920336, 0.8920338, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ufcy8"]
+texture = ExtResource("1_6y3gm")
+texture_margin_left = 10.0
+texture_margin_top = 16.0
+texture_margin_right = 10.0
+texture_margin_bottom = 7.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.7807016, 0.7807017, 0.7807016, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_it5hq"]
+texture = ExtResource("1_c41xj")
+texture_margin_left = 77.0
+texture_margin_top = 73.0
+texture_margin_right = 74.0
+texture_margin_bottom = 77.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 100, 100)
+
+[resource]
+default_font = ExtResource("3_6y3gm")
+default_font_size = 35
+Button/constants/outline_size = 3
+Button/styles/disabled = SubResource("StyleBoxTexture_6y3gm")
+Button/styles/focus = SubResource("StyleBoxTexture_6y3gm")
+Button/styles/hover = SubResource("StyleBoxTexture_h6xhg")
+Button/styles/normal = SubResource("StyleBoxTexture_6y3gm")
+Button/styles/pressed = SubResource("StyleBoxTexture_ufcy8")
+MarginContainer/constants/margin_bottom = 20
+MarginContainer/constants/margin_left = 20
+MarginContainer/constants/margin_right = 20
+MarginContainer/constants/margin_top = 20
+Panel/styles/panel = SubResource("StyleBoxTexture_it5hq")

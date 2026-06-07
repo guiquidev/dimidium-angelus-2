@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dk0k5cv8xy2x1"]
+
+[ext_resource type="Theme" uid="uid://csqkbn2ap2ti0" path="res://src/resources/ui/ui_theme.tres" id="1_n3wqq"]
+
+[node name="ThemePreview" type="Control" unique_id=690219338]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="." unique_id=229441113]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 5.0
+offset_right = 77.0
+offset_bottom = 36.0
+text = "Button"
+
+[node name="Panel" type="Panel" parent="." unique_id=967917479]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 45.0
+offset_right = 195.0
+offset_bottom = 200.0
+theme = ExtResource("1_n3wqq")

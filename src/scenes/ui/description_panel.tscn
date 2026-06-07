@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dnqo6rslvcxlo"]
+
+[ext_resource type="Script" uid="uid://dfgsb2evwk6l0" path="res://src/scripts/ui/description_panel.gd" id="1_ukta3"]
+
+[node name="Panel" type="Panel" unique_id=1111386767 groups=["hoverable"]]
+modulate = Color(1, 1, 1, 0)
+script = ExtResource("1_ukta3")
+hover_description = "Default hover"

@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_o2j04")
 name = "Basic Attack"
+description = "The most basic attack ever"
 action_target = 1
 strength = 5
 action = ExtResource("1_4yirw")

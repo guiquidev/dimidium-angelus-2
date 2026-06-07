@@ -2,18 +2,21 @@
 
 [ext_resource type="Script" uid="uid://dc6prdiklmywd" path="res://src/resources/actions/action_data.gd" id="1_6pmwq"]
 [ext_resource type="Script" uid="uid://bnj4qqvshudod" path="res://src/resources/entities/entity_data.gd" id="1_xxug0"]
-[ext_resource type="Texture2D" uid="uid://b3hbuy08q3bqx" path="res://src/assets/angel_placeholder.png" id="2_5o5rw"]
+[ext_resource type="Resource" uid="uid://cx27fnsl7ldj6" path="res://src/resources/actions/attacks/basic_attack/basic_attack_data.tres" id="2_1q6o0"]
 [ext_resource type="Script" uid="uid://dojbtr0wvdk1m" path="res://src/resources/entities/entity_stats.gd" id="3_5o5rw"]
+[ext_resource type="Texture2D" uid="uid://c4m5gb8yyfg2k" path="res://src/resources/entities/enemies/jerm.jpg" id="3_6pmwq"]
+[ext_resource type="Resource" uid="uid://dlbumiq0ns0eu" path="res://src/resources/actions/skills/basic_skill/basic_skill_data.tres" id="3_37ge8"]
 
 [sub_resource type="Resource" id="Resource_6pmwq"]
 script = ExtResource("3_5o5rw")
-max_health = 10
+max_health = 6
 base_damage = 1
 metadata/_custom_type_script = "uid://dojbtr0wvdk1m"
 
 [resource]
 script = ExtResource("1_xxug0")
 name = "Placeholder Enemy"
-sprite = ExtResource("2_5o5rw")
+sprite = ExtResource("3_6pmwq")
 stats = SubResource("Resource_6pmwq")
+actions_data = Array[ExtResource("1_6pmwq")]([ExtResource("2_1q6o0"), ExtResource("3_37ge8")])
 metadata/_custom_type_script = "uid://bnj4qqvshudod"

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://crsb55bknsiap"]
 
 [ext_resource type="Script" uid="uid://d1qedop3pjthc" path="res://src/resources/entities/enemies/enemy.gd" id="1_jak34"]
+[ext_resource type="Theme" uid="uid://csqkbn2ap2ti0" path="res://src/resources/ui/ui_theme.tres" id="2_y152h"]
 
 [node name="Enemy" type="Node2D" unique_id=2039990916]
 script = ExtResource("1_jak34")
@@ -12,6 +13,7 @@ offset_left = -24.0
 offset_top = -15.0
 offset_right = 23.0
 offset_bottom = 8.0
+theme = ExtResource("2_y152h")
 text = "Name"
 horizontal_alignment = 1
 vertical_alignment = 1

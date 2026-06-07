@@ -1,18 +1,26 @@
 [gd_scene format=3 uid="uid://tqffm5vey006"]
 
 [ext_resource type="Script" uid="uid://g3bq1a7bmrih" path="res://src/scripts/rooms/room_manager.gd" id="1_kokaf"]
+[ext_resource type="Script" uid="uid://bp3u61ily7fbx" path="res://src/scripts/game_manager.gd" id="1_lp058"]
 [ext_resource type="Script" uid="uid://deed62mrnq5bj" path="res://src/scripts/rooms/combat_room.gd" id="1_rr2wm"]
 [ext_resource type="Resource" uid="uid://d2urp0crbl13u" path="res://src/resources/entities/enemies/placeholder_enemy.tres" id="3_5dlwx"]
 [ext_resource type="PackedScene" uid="uid://dp56l7pbomsi6" path="res://src/scenes/player.tscn" id="4_dbro3"]
 [ext_resource type="PackedScene" uid="uid://b3p3pdyt1xblc" path="res://src/scenes/enemy.tscn" id="4_o81g6"]
 [ext_resource type="Script" uid="uid://beh8bne78eady" path="res://src/resources/actions/action_resolver.gd" id="5_2lg1k"]
-[ext_resource type="Texture2D" uid="uid://dh0rq782fs31t" path="res://src/assets/square.png" id="5_o81g6"]
-[ext_resource type="PackedScene" uid="uid://n3gwt2751va7" path="res://src/scenes/ui/player_ui_manager.tscn" id="6_5lsyw"]
-[ext_resource type="PackedScene" uid="uid://cmdiymil0hyq1" path="res://src/scenes/ui/base_button.tscn" id="6_dbro3"]
+[ext_resource type="Script" uid="uid://b1i4ob2wuk1ne" path="res://src/scripts/rooms/shop_room.gd" id="9_24j03"]
+[ext_resource type="Script" uid="uid://bngf6g60xl0jq" path="res://src/scripts/rooms/event_room.gd" id="10_p1ia5"]
+[ext_resource type="Script" uid="uid://cnmuh2rtkjp60" path="res://src/scripts/rooms/bonfire_room.gd" id="11_kbdt0"]
+[ext_resource type="Script" uid="uid://dmxlivx47wejc" path="res://src/scripts/ui/game_ui_manager.gd" id="12_ccybt"]
+[ext_resource type="Theme" uid="uid://csqkbn2ap2ti0" path="res://src/resources/ui/ui_theme.tres" id="13_4rjby"]
+[ext_resource type="Script" uid="uid://dfgsb2evwk6l0" path="res://src/scripts/ui/description_panel.gd" id="13_50ugh"]
+[ext_resource type="PackedScene" uid="uid://dtcg82k4g3ve2" path="res://src/scenes/ui/player_ui_manager.tscn" id="15_50ugh"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_kkvs4"]
 
-[node name="Main" type="Node2D" unique_id=761405414]
+[node name="Main" type="Node2D" unique_id=761405414 node_paths=PackedStringArray("room_manager", "player")]
+script = ExtResource("1_lp058")
+room_manager = NodePath("Rooms")
+player = NodePath("Rooms/Combat/PlayerNode/Player")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1941198815]
 modulate = Color(0.5130417, 0.15986297, 0.20790896, 1)
@@ -20,11 +28,14 @@ position = Vector2(640, 360)
 scale = Vector2(1280, 720)
 texture = SubResource("CanvasTexture_kkvs4")
 
-[node name="Rooms" type="Node2D" parent="." unique_id=1947204029 node_paths=PackedStringArray("rooms_by_type")]
+[node name="Rooms" type="Node2D" parent="." unique_id=1947204029 node_paths=PackedStringArray("rooms_by_type", "continue_button")]
 script = ExtResource("1_kokaf")
 room_count = 5
 rooms_by_type = {
-0: NodePath("Combat")
+0: NodePath("Combat"),
+1: NodePath("Shop"),
+2: NodePath("Bonfire"),
+3: NodePath("Event")
 }
 rooms_weights = Dictionary[int, int]({
 0: 5,
@@ -32,12 +43,14 @@ rooms_weights = Dictionary[int, int]({
 2: 1,
 3: 3
 })
+continue_button = NodePath("../GameUI/BottomSection/MarginContainerContinue/ContinueButton")
 
-[node name="Combat" type="Node2D" parent="Rooms" unique_id=1725202512 node_paths=PackedStringArray("player", "enemy_entity", "action_resolver")]
+[node name="Combat" type="Node2D" parent="Rooms" unique_id=1725202512 node_paths=PackedStringArray("player", "enemy", "end_turn_button", "action_resolver")]
 script = ExtResource("1_rr2wm")
 player = NodePath("PlayerNode/Player")
-enemy_entity = NodePath("EnemyNode/Enemy")
+enemy = NodePath("EnemyNode/Enemy")
 enemy_data = ExtResource("3_5dlwx")
+end_turn_button = NodePath("../../GameUI/BottomSection/MarginContainerBottom/Bottom/Details/MarginContainer/VBoxContainer/EndTurnButton")
 action_resolver = NodePath("ActionResolver")
 
 [node name="ActionResolver" type="Node" parent="Rooms/Combat" unique_id=1932610371]
@@ -47,91 +60,198 @@ script = ExtResource("5_2lg1k")
 position = Vector2(1038, 434)
 
 [node name="Enemy" parent="Rooms/Combat/EnemyNode" unique_id=2039990916 instance=ExtResource("4_o81g6")]
+visible = false
 
 [node name="PlayerNode" type="Node2D" parent="Rooms/Combat" unique_id=876074291]
 position = Vector2(274, 420)
 
 [node name="Player" parent="Rooms/Combat/PlayerNode" unique_id=185920088 instance=ExtResource("4_dbro3")]
 
-[node name="PlayerUIManager" parent="Rooms/Combat/PlayerNode" unique_id=912138795 node_paths=PackedStringArray("player", "actions_container", "health_label", "mana_label") instance=ExtResource("6_5lsyw")]
-player = NodePath("../Player")
-actions_container = NodePath("../../../../UI/HBoxContainer/Actions/ActionsContainer")
-health_label = NodePath("../../../../UI/HBoxContainer/HealthMana/HealthLabel")
-mana_label = NodePath("../../../../UI/HBoxContainer/HealthMana/ManaLabel")
-
 [node name="Shop" type="Node2D" parent="Rooms" unique_id=1456505968]
+script = ExtResource("9_24j03")
+room_type = 1
+
+[node name="Bonfire" type="Node2D" parent="Rooms" unique_id=1428629708 node_paths=PackedStringArray("bonfire_ui", "player")]
+script = ExtResource("11_kbdt0")
+bonfire_ui = NodePath("../../GameUI/BonfireUI")
+player = NodePath("../Combat/PlayerNode/Player")
+room_type = 2
 
 [node name="Event" type="Node2D" parent="Rooms" unique_id=1438195118]
+script = ExtResource("10_p1ia5")
+room_type = 3
 
-[node name="Bonfire" type="Node2D" parent="Rooms" unique_id=1428629708]
+[node name="GameUI" type="CanvasLayer" parent="." unique_id=28378767 node_paths=PackedStringArray("root", "description_label")]
+script = ExtResource("12_ccybt")
+root = NodePath("..")
+description_label = NodePath("BottomSection/MarginContainerBottom/Bottom/Details/MarginContainer/VBoxContainer/DescriptionLabel")
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=28378767]
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI" unique_id=131632187]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+[node name="BonfireUI" type="Control" parent="GameUI" unique_id=484973328]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -600.0
-offset_top = -110.0
-offset_right = 600.0
-offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="GameUI/BonfireUI" unique_id=195119035]
+custom_minimum_size = Vector2(600, 350)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -260.0
+offset_right = 485.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("13_4rjby")
+
+[node name="MarginContainer" type="MarginContainer" parent="GameUI/BonfireUI/Panel" unique_id=1915335815]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameUI/BonfireUI/Panel/MarginContainer" unique_id=642441087]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="BonfireInfo" type="Panel" parent="GameUI/BonfireUI/Panel/MarginContainer/VBoxContainer" unique_id=779218263]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme = ExtResource("13_4rjby")
+
+[node name="Label" type="Label" parent="GameUI/BonfireUI/Panel/MarginContainer/VBoxContainer/BonfireInfo" unique_id=922804424]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.5
+offset_top = -20.0
+offset_right = 110.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "You can heal here"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="GameUI/BonfireUI/Panel/MarginContainer/VBoxContainer" unique_id=1683791341]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Heal"
+
+[node name="BottomSection" type="VBoxContainer" parent="GameUI" unique_id=1375259608]
+custom_minimum_size = Vector2(0, 300)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -46.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="MarginContainerContinue" type="MarginContainer" parent="GameUI/BottomSection" unique_id=288392010]
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_filter = 2
+theme_override_constants/margin_right = 21
+
+[node name="ContinueButton" type="Button" parent="GameUI/BottomSection/MarginContainerContinue" unique_id=1380989172 groups=["hoverable"]]
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("13_4rjby")
+text = "Continue"
+script = ExtResource("13_50ugh")
+hover_description = "Proceed if you can"
+
+[node name="MarginContainerBottom" type="MarginContainer" parent="GameUI/BottomSection" unique_id=1039718822]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="Bottom" type="HBoxContainer" parent="GameUI/BottomSection/MarginContainerBottom" unique_id=131632187]
+custom_minimum_size = Vector2(1200, 200)
+layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="HealthMana" type="TextureRect" parent="UI/HBoxContainer" unique_id=181203907]
-self_modulate = Color(0.34117648, 0.078431375, 0.015686275, 1)
+[node name="PlayerStatus" type="Panel" parent="GameUI/BottomSection/MarginContainerBottom/Bottom" unique_id=583689479]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("5_o81g6")
+size_flags_stretch_ratio = 1.5
+theme = ExtResource("13_4rjby")
 
-[node name="HealthLabel" type="Label" parent="UI/HBoxContainer/HealthMana" unique_id=717706618]
+[node name="MarginContainer" type="MarginContainer" parent="GameUI/BottomSection/MarginContainerBottom/Bottom/PlayerStatus" unique_id=2102078727]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 23.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthLabel" type="Label" parent="GameUI/BottomSection/MarginContainerBottom/Bottom/PlayerStatus/MarginContainer" unique_id=717706618]
+visible = false
+layout_mode = 2
 text = "Current Health"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ManaLabel" type="Label" parent="UI/HBoxContainer/HealthMana" unique_id=635612293]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 32.0
-offset_bottom = 55.0
-grow_horizontal = 2
+[node name="ManaLabel" type="Label" parent="GameUI/BottomSection/MarginContainerBottom/Bottom/PlayerStatus/MarginContainer" unique_id=635612293]
+visible = false
+layout_mode = 2
 text = "Current Mana"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Actions" type="TextureRect" parent="UI/HBoxContainer" unique_id=1858531904]
-self_modulate = Color(0.34117648, 0.078431375, 0.015686275, 1)
+[node name="PlayerUIManager" parent="GameUI/BottomSection/MarginContainerBottom/Bottom/PlayerStatus/MarginContainer" unique_id=1566111044 node_paths=PackedStringArray("player", "actions_container", "game_ui_manager") instance=ExtResource("15_50ugh")]
+layout_mode = 2
+player = NodePath("../../../../../../../Rooms/Combat/PlayerNode/Player")
+actions_container = NodePath("../../../Actions/MarginContainer/ActionsContainer")
+game_ui_manager = NodePath("../../../../../..")
+
+[node name="Actions" type="Panel" parent="GameUI/BottomSection/MarginContainerBottom/Bottom" unique_id=827601405]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 4.0
-texture = ExtResource("5_o81g6")
+size_flags_stretch_ratio = 3.0
+theme = ExtResource("13_4rjby")
 
-[node name="ActionsContainer" type="GridContainer" parent="UI/HBoxContainer/Actions" unique_id=576313548]
+[node name="MarginContainer" type="MarginContainer" parent="GameUI/BottomSection/MarginContainerBottom/Bottom/Actions" unique_id=1983357408]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ActionsContainer" type="GridContainer" parent="GameUI/BottomSection/MarginContainerBottom/Bottom/Actions/MarginContainer" unique_id=576313548]
+layout_mode = 2
 columns = 3
 
-[node name="Details" type="TextureRect" parent="UI/HBoxContainer" unique_id=349053002]
-self_modulate = Color(0.34117648, 0.078431375, 0.015686275, 1)
+[node name="Details" type="Panel" parent="GameUI/BottomSection/MarginContainerBottom/Bottom" unique_id=559603762]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-texture = ExtResource("5_o81g6")
+theme = ExtResource("13_4rjby")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/HBoxContainer/Details" unique_id=1132264419]
+[node name="MarginContainer" type="MarginContainer" parent="GameUI/BottomSection/MarginContainerBottom/Bottom/Details" unique_id=351536781]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -139,33 +259,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DescriptionLabel" type="Label" parent="UI/HBoxContainer/Details/VBoxContainer" unique_id=1414888491]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameUI/BottomSection/MarginContainerBottom/Bottom/Details/MarginContainer" unique_id=1132264419]
+layout_mode = 2
+
+[node name="DescriptionLabel" type="Label" parent="GameUI/BottomSection/MarginContainerBottom/Bottom/Details/MarginContainer/VBoxContainer" unique_id=1414888491]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
-size_flags_vertical = 6
-text = "Here goes the description for an item, NPC or anything that has a text property"
-autowrap_mode = 2
+size_flags_vertical = 3
+autowrap_mode = 3
 
-[node name="EndTurnButton" parent="UI/HBoxContainer/Details/VBoxContainer" unique_id=673682621 instance=ExtResource("6_dbro3")]
+[node name="EndTurnButton" type="Button" parent="GameUI/BottomSection/MarginContainerBottom/Bottom/Details/MarginContainer/VBoxContainer" unique_id=1237209805]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 8
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
 text = "End Turn"
 
-[node name="ProceedButton" type="Button" parent="UI" unique_id=1380989172]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -83.0
-offset_top = -153.0
-offset_right = -12.0
-offset_bottom = -122.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Proceed"
-
-[connection signal="action_added" from="Rooms/Combat/PlayerNode/Player" to="Rooms/Combat/PlayerNode/PlayerUIManager" method="on_action_added"]
+[connection signal="action_executed" from="Rooms/Combat/EnemyNode/Enemy" to="Rooms/Combat" method="execute_action"]
+[connection signal="action_added" from="Rooms/Combat/PlayerNode/Player" to="GameUI/BottomSection/MarginContainerBottom/Bottom/PlayerStatus/MarginContainer/PlayerUIManager" method="on_action_added"]
 [connection signal="action_executed" from="Rooms/Combat/PlayerNode/Player" to="Rooms/Combat" method="execute_action"]
-[connection signal="health_changed" from="Rooms/Combat/PlayerNode/Player" to="Rooms/Combat/PlayerNode/PlayerUIManager" method="on_health_changed"]
-[connection signal="pressed" from="UI/ProceedButton" to="Rooms" method="_on_proceed_button_pressed"]
+[connection signal="health_changed" from="Rooms/Combat/PlayerNode/Player" to="GameUI/BottomSection/MarginContainerBottom/Bottom/PlayerStatus/MarginContainer/PlayerUIManager" method="on_health_changed"]
+[connection signal="pressed" from="GameUI/BonfireUI/Panel/MarginContainer/VBoxContainer/Button" to="Rooms/Bonfire" method="_on_button_pressed"]
+[connection signal="pressed" from="GameUI/BottomSection/MarginContainerContinue/ContinueButton" to="Rooms" method="_on_continue_button_pressed"]
+[connection signal="pressed" from="GameUI/BottomSection/MarginContainerBottom/Bottom/Details/MarginContainer/VBoxContainer/EndTurnButton" to="Rooms" method="_on_continue_button_pressed"]

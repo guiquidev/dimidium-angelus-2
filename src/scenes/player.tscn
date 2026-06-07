@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dvbgwk6510mh4" path="res://src/resources/entities/player/player.gd" id="1_v4rts"]
 [ext_resource type="Resource" uid="uid://c3n43lwg6ok8r" path="res://src/resources/entities/player/player_data.tres" id="3_hwyk6"]
+[ext_resource type="PackedScene" uid="uid://dnqo6rslvcxlo" path="res://src/scenes/ui/description_panel.tscn" id="3_l2v1k"]
+[ext_resource type="Theme" uid="uid://csqkbn2ap2ti0" path="res://src/resources/ui/ui_theme.tres" id="3_ya6j6"]
 
 [node name="Player" type="Node2D" unique_id=185920088 node_paths=PackedStringArray("sprite", "name_label")]
 script = ExtResource("1_v4rts")
@@ -24,4 +26,12 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+theme = ExtResource("3_ya6j6")
 text = "Name"
+
+[node name="DescriptionPanel" parent="." unique_id=1111386767 instance=ExtResource("3_l2v1k")]
+offset_left = -125.0
+offset_top = -250.0
+offset_right = 125.0
+offset_bottom = 50.0
+hover_description = "You, despite everything"

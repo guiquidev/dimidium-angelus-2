@@ -3,6 +3,8 @@ class_name ActionButton
 
 signal action_executed(index: int)
 
+@export var hover_description: String
+
 var action_index: int = 0
 
 

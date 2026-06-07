@@ -2,18 +2,22 @@ extends Entity
 class_name Player
 
 signal action_added(action: ActionData)
-signal action_executed(action: ActionData, is_player: bool)
 
 var current_mana: int = 0
 
 
 func _ready() -> void:
-	initialize()
-	add_initial_actions()
+	pass
 
 
 func _process(delta: float) -> void:
 	pass
+
+
+func setup():
+	initialize()
+	add_initial_actions()
+	change_health(0, false)
 
 
 func add_action(action_data: ActionData):
@@ -26,7 +30,10 @@ func add_initial_actions():
 		action_added.emit(action_data)
 
 
-func on_action_executed(index: int):
-	print("Executing action: ", data.actions_data[index].name)
+func on_action_button_pressed(index: int):
+	print("Player - executing action: ", data.actions_data[index].name)
 	action_executed.emit(data.actions_data[index], true)
-	
+
+
+func hover():
+	print("hover")

@@ -6,6 +6,10 @@ Style
 - biopunk hell
 - diablo-like ui
 - frankensteined pictures
+- fonts:
+	https://www.dafont.com/kampung-zombie.font 
+	https://www.dafont.com/times-new-yorker.font
+	https://www.dafont.com/essential.font
 
 Features
 - turn-based combat
@@ -26,17 +30,17 @@ Combat
 -----
 
 Todo
-- leave everything in the main scene and just show/hide nodes
+- proper room generation
 - combat
-- item/equipment class
-- ui theme
-- hud
+- backgrounds
 - shop
 - events
-- backgrounds
+- hud
+- item/equipment class
 
 Doing
-- room generation
+- ui theme
+- mana usage
 
 Done
 > 05-25
@@ -66,7 +70,38 @@ Done
 - base entity class -> max health, base damage, sprite
 
 > 05-31
+- room progression
 
 > 06-01
+- combat loop
 
 > 06-02
+- placeholder rooms progression - shop, event, bonfire
+
+> 06-03
+- hover description
+
+> 06-04
+- panel border
+
+> 06-05
+- health display visuals
+
+> 06-06
+- health display script
+- description label autosizing
+
+> 06-07
+- 
+
+> 06-08
+- 
+
+> 06-09
+- 
+
+> 06-10
+- 
+
+> 06-11
+- 

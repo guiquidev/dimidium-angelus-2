@@ -15,7 +15,7 @@ enum ActionTarget {
 enum RoomType {
 	COMBAT,
 	SHOP,
-	HEAL,
+	BONFIRE,
 	EVENT,
 	OTHER,
 }

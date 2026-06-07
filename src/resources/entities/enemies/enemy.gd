@@ -1,6 +1,10 @@
 extends Entity
 class_name Enemy
 
+@export var description_panel: DescriptionPanel
+
+var current_action_index: int = 0
+
 
 func _ready() -> void:
 	pass # Replace with function body.
@@ -8,3 +12,17 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	pass
+
+
+func set_description():
+	description_panel.hover_description = data.name
+
+
+func choose_next_action():
+	current_action_index = (current_action_index + 1) % data.actions_data.size()
+
+
+func execute_next_action():
+	print("Enemy - executing action: ", data.actions_data[current_action_index].name)
+	action_executed.emit(data.actions_data[current_action_index], false)
+	choose_next_action()

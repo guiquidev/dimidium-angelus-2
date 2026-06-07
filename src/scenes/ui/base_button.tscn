@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://cmdiymil0hyq1"]
 
-[ext_resource type="Script" uid="uid://5m4o32outruy" path="res://src/scripts/action_button.gd" id="1_g0a4f"]
+[ext_resource type="Script" uid="uid://5m4o32outruy" path="res://src/scripts/ui/action_button.gd" id="1_g0a4f"]
+[ext_resource type="Theme" uid="uid://csqkbn2ap2ti0" path="res://src/resources/ui/ui_theme.tres" id="1_in4h0"]
 
-[node name="BaseButton" type="Button" unique_id=1130160028]
+[node name="BaseButton" type="Button" unique_id=1130160028 groups=["hoverable"]]
+theme = ExtResource("1_in4h0")
 text = "Button Text"
 script = ExtResource("1_g0a4f")
+hover_description = "Botão"
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
