@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="EntityData" format=3 uid="uid://bn7hrgwxfh01m"]
+
+[ext_resource type="Script" uid="uid://ba8p7fstn3r3u" path="res://src/resources/actions/action.gd" id="1_uk2tl"]
+[ext_resource type="Script" uid="uid://bnj4qqvshudod" path="res://src/resources/entities/entity_data.gd" id="2_6dekt"]
+[ext_resource type="Resource" uid="uid://dsqfpl5hhgtaj" path="res://src/resources/actions/buffs/shell_up_buff/shell_up_buff.tres" id="2_8ysfg"]
+[ext_resource type="Resource" uid="uid://bqfu05fe7pyyu" path="res://src/resources/actions/attacks/bite_attack/bite_action.tres" id="2_sud5r"]
+[ext_resource type="Texture2D" uid="uid://ji20t7skyogs" path="res://src/resources/entities/enemies/angry_turtle/angry_turtle.png" id="3_rbx0u"]
+[ext_resource type="Resource" uid="uid://ckiwhigndyoc4" path="res://src/resources/actions/buffs/enrage_buff/enrage_action.tres" id="4_g2u1a"]
+[ext_resource type="Script" uid="uid://wxhimklyh3te" path="res://src/resources/actions/buffs/buff_stats.gd" id="4_sud5r"]
+[ext_resource type="Script" uid="uid://dojbtr0wvdk1m" path="res://src/resources/entities/entity_stats.gd" id="5_8ysfg"]
+
+[sub_resource type="Resource" id="Resource_g2u1a"]
+script = ExtResource("5_8ysfg")
+max_health = 10
+metadata/_custom_type_script = "uid://dojbtr0wvdk1m"
+
+[resource]
+script = ExtResource("2_6dekt")
+name = "Angry Turtle"
+description = "Has had enough straws"
+sprite = ExtResource("3_rbx0u")
+stats = SubResource("Resource_g2u1a")
+actions = Array[ExtResource("1_uk2tl")]([ExtResource("2_8ysfg"), ExtResource("2_sud5r"), ExtResource("2_8ysfg"), ExtResource("2_sud5r"), ExtResource("4_g2u1a")])
+metadata/_custom_type_script = "uid://bnj4qqvshudod"

@@ -15,14 +15,24 @@ func _process(delta: float) -> void:
 
 
 func set_description():
-	description_panel.hover_description = data.name
+	description_panel.hover_description = data.description
+
+
+func setup():
+	initialize()
+	set_description()
+	current_action_index = 0
+
+
+func on_turn_ended():
+	next_turn()
 
 
 func choose_next_action():
-	current_action_index = (current_action_index + 1) % data.actions_data.size()
+	current_action_index = (current_action_index + 1) % data.actions.size()
 
 
 func execute_next_action():
-	print("Enemy - executing action: ", data.actions_data[current_action_index].name)
-	action_executed.emit(data.actions_data[current_action_index], false)
+	print("Enemy - executing action: ", data.actions[current_action_index].data.name)
+	action_executed.emit(data.actions[current_action_index], false)
 	choose_next_action()

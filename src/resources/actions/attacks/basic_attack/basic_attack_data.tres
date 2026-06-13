@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="ActionData" format=3 uid="uid://cx27fnsl7ldj6"]
+[gd_resource type="Resource" script_class="ActionData" format=3 uid="uid://bes7xvhplqxg6"]
 
-[ext_resource type="Resource" uid="uid://b1bcsndl0scbf" path="res://src/resources/actions/attacks/basic_attack/basic_attack_action.tres" id="1_4yirw"]
 [ext_resource type="Script" uid="uid://dc6prdiklmywd" path="res://src/resources/actions/action_data.gd" id="2_o2j04"]
 
 [resource]
@@ -8,6 +7,6 @@ script = ExtResource("2_o2j04")
 name = "Basic Attack"
 description = "The most basic attack ever"
 action_target = 1
-strength = 5
-action = ExtResource("1_4yirw")
+base_strength = 3
+mana_cost = 3
 metadata/_custom_type_script = "uid://dc6prdiklmywd"

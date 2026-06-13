@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DeathStareAction" format=3 uid="uid://mrg5wtvh2qm3"]
+
+[ext_resource type="Script" uid="uid://dc6prdiklmywd" path="res://src/resources/actions/action_data.gd" id="1_gbssd"]
+[ext_resource type="Script" uid="uid://c2s4w0c3lny0p" path="res://src/resources/actions/skills/death_stare_skill/death_stare_action.gd" id="2_hhpuh"]
+
+[sub_resource type="Resource" id="Resource_fkckk"]
+script = ExtResource("1_gbssd")
+name = "Death Stare"
+description = "Deals direct damage, ignoring armor"
+action_target = 1
+base_strength = 1
+metadata/_custom_type_script = "uid://dc6prdiklmywd"
+
+[resource]
+script = ExtResource("2_hhpuh")
+data = SubResource("Resource_fkckk")
+metadata/_custom_type_script = "uid://c2s4w0c3lny0p"

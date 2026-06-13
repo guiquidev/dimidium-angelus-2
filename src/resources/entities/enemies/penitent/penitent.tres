@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="EntityData" format=3 uid="uid://y6kq04fj6yji"]
+
+[ext_resource type="Script" uid="uid://ba8p7fstn3r3u" path="res://src/resources/actions/action.gd" id="1_vqmrl"]
+[ext_resource type="Resource" uid="uid://d12dixrs18838" path="res://src/resources/actions/attacks/punch_attack/punch_action.tres" id="2_jyxdd"]
+[ext_resource type="Script" uid="uid://bnj4qqvshudod" path="res://src/resources/entities/entity_data.gd" id="2_oty27"]
+[ext_resource type="Resource" uid="uid://mrg5wtvh2qm3" path="res://src/resources/actions/skills/death_stare_skill/death_stare_action.tres" id="3_8q0my"]
+[ext_resource type="Texture2D" uid="uid://q0m7gclx5oom" path="res://src/resources/entities/enemies/penitent/penitent.png" id="4_bmlc2"]
+[ext_resource type="Resource" uid="uid://2edxextygse7" path="res://src/resources/actions/skills/pray_skill/pray_action.tres" id="4_ehiys"]
+[ext_resource type="Script" uid="uid://wxhimklyh3te" path="res://src/resources/actions/buffs/buff_stats.gd" id="5_8q0my"]
+[ext_resource type="Script" uid="uid://dojbtr0wvdk1m" path="res://src/resources/entities/entity_stats.gd" id="6_ehiys"]
+
+[sub_resource type="Resource" id="Resource_so403"]
+script = ExtResource("6_ehiys")
+max_health = 10
+metadata/_custom_type_script = "uid://dojbtr0wvdk1m"
+
+[resource]
+script = ExtResource("2_oty27")
+name = "Penitent"
+description = "Looking out for forgiveness"
+sprite = ExtResource("4_bmlc2")
+stats = SubResource("Resource_so403")
+actions = Array[ExtResource("1_vqmrl")]([ExtResource("2_jyxdd"), ExtResource("3_8q0my"), ExtResource("2_jyxdd"), ExtResource("4_ehiys")])
+metadata/_custom_type_script = "uid://bnj4qqvshudod"

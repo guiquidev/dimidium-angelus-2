@@ -1,12 +1,13 @@
 [gd_resource type="Resource" script_class="ActionData" format=3 uid="uid://dlbumiq0ns0eu"]
 
-[ext_resource type="Resource" uid="uid://7j48fodb8tgh" path="res://src/resources/actions/skills/basic_skill/basic_skill_action.tres" id="1_uujwf"]
 [ext_resource type="Script" uid="uid://dc6prdiklmywd" path="res://src/resources/actions/action_data.gd" id="1_xdxub"]
 
 [resource]
 script = ExtResource("1_xdxub")
 name = "Basic Skill"
+description = "Basic Skill Description"
 type = 1
-strength = 1
-action = ExtResource("1_uujwf")
+action_target = 1
+base_strength = 1
+mana_cost = 1
 metadata/_custom_type_script = "uid://dc6prdiklmywd"

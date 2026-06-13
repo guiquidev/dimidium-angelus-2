@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="BasicBuffAction" format=3 uid="uid://dsqfpl5hhgtaj"]
+
+[ext_resource type="Script" uid="uid://wxhimklyh3te" path="res://src/resources/actions/buffs/buff_stats.gd" id="1_q11fo"]
+[ext_resource type="Script" uid="uid://4e0rbyciusl2" path="res://src/resources/actions/buffs/buff_data.gd" id="2_3oc4h"]
+[ext_resource type="Script" uid="uid://bkrtapdi6avn8" path="res://src/resources/actions/buffs/basic_buff/basic_buff_action.gd" id="3_0fsgr"]
+
+[sub_resource type="Resource" id="Resource_uehao"]
+script = ExtResource("1_q11fo")
+buff_type = 1
+buff_duration = 3
+metadata/_custom_type_script = "uid://wxhimklyh3te"
+
+[sub_resource type="Resource" id="Resource_isw8d"]
+script = ExtResource("2_3oc4h")
+buff_stats = SubResource("Resource_uehao")
+name = "Shell Up"
+description = "Hide in the shell and take less damage"
+type = 2
+base_strength = 5
+mana_cost = 1
+metadata/_custom_type_script = "uid://4e0rbyciusl2"
+
+[resource]
+script = ExtResource("3_0fsgr")
+data = SubResource("Resource_isw8d")
+metadata/_custom_type_script = "uid://bkrtapdi6avn8"

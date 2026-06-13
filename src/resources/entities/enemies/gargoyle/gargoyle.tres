@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="EntityData" format=3 uid="uid://dds86txa0ovwe"]
+
+[ext_resource type="Script" uid="uid://ba8p7fstn3r3u" path="res://src/resources/actions/action.gd" id="1_16087"]
+[ext_resource type="Script" uid="uid://bnj4qqvshudod" path="res://src/resources/entities/entity_data.gd" id="2_63sk0"]
+[ext_resource type="Script" uid="uid://dc6prdiklmywd" path="res://src/resources/actions/action_data.gd" id="2_lrelk"]
+[ext_resource type="Texture2D" uid="uid://b3kb44m7ywga3" path="res://src/resources/entities/enemies/gargoyle/gargoyle.png" id="3_63sk0"]
+[ext_resource type="Script" uid="uid://con8614k2qmfq" path="res://src/resources/actions/attacks/basic_attack/basic_attack_action.gd" id="3_m8bkr"]
+[ext_resource type="Resource" uid="uid://1nf3x7mm5dje" path="res://src/resources/actions/buffs/contego/contego.tres" id="4_m8bkr"]
+[ext_resource type="Script" uid="uid://wxhimklyh3te" path="res://src/resources/actions/buffs/buff_stats.gd" id="5_lrelk"]
+[ext_resource type="Script" uid="uid://dojbtr0wvdk1m" path="res://src/resources/entities/entity_stats.gd" id="6_m8bkr"]
+
+[sub_resource type="Resource" id="Resource_7ksgt"]
+script = ExtResource("2_lrelk")
+name = "Scratch"
+description = "Claw attack"
+action_target = 1
+base_strength = 2
+metadata/_custom_type_script = "uid://dc6prdiklmywd"
+
+[sub_resource type="Resource" id="Resource_6tia6"]
+script = ExtResource("3_m8bkr")
+data = SubResource("Resource_7ksgt")
+metadata/_custom_type_script = "uid://con8614k2qmfq"
+
+[sub_resource type="Resource" id="Resource_lrelk"]
+script = ExtResource("5_lrelk")
+buff_type = 1
+buff_duration = 5
+metadata/_custom_type_script = "uid://wxhimklyh3te"
+
+[sub_resource type="Resource" id="Resource_pmuvk"]
+script = ExtResource("6_m8bkr")
+max_health = 10
+buffs = Dictionary[ExtResource("5_lrelk"), int]({
+SubResource("Resource_lrelk"): 5
+})
+metadata/_custom_type_script = "uid://dojbtr0wvdk1m"
+
+[resource]
+script = ExtResource("2_63sk0")
+name = "Gargoyle"
+description = "Looks like it's made out of stone, but it can move?"
+sprite = ExtResource("3_63sk0")
+stats = SubResource("Resource_pmuvk")
+actions = Array[ExtResource("1_16087")]([SubResource("Resource_6tia6"), SubResource("Resource_6tia6"), SubResource("Resource_6tia6"), ExtResource("4_m8bkr")])
+metadata/_custom_type_script = "uid://bnj4qqvshudod"

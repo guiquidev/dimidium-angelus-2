@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="HealAction" format=3 uid="uid://2edxextygse7"]
+
+[ext_resource type="Script" uid="uid://dc6prdiklmywd" path="res://src/resources/actions/action_data.gd" id="1_tfgrc"]
+[ext_resource type="Resource" uid="uid://j5044r06mlad" path="res://src/resources/actions/skills/pray_skill/pray_buff_action.tres" id="2_h0jes"]
+[ext_resource type="Script" uid="uid://clehqwteok1et" path="res://src/resources/actions/skills/heal_skill/heal_action.gd" id="2_lirdw"]
+
+[sub_resource type="Resource" id="Resource_h0jes"]
+script = ExtResource("1_tfgrc")
+name = "Pray"
+description = "Deeply recover from any wounds, healing and increasing damage"
+type = 1
+base_strength = 5
+metadata/_custom_type_script = "uid://dc6prdiklmywd"
+
+[resource]
+script = ExtResource("2_lirdw")
+data = SubResource("Resource_h0jes")
+next_action = ExtResource("2_h0jes")
+metadata/_custom_type_script = "uid://clehqwteok1et"

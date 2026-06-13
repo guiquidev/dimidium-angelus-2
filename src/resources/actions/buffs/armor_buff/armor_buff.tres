@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="BasicBuffAction" format=3 uid="uid://jhi156b0m77a"]
+
+[ext_resource type="Script" uid="uid://bkrtapdi6avn8" path="res://src/resources/actions/buffs/basic_buff/basic_buff_action.gd" id="1_iemxx"]
+[ext_resource type="Script" uid="uid://wxhimklyh3te" path="res://src/resources/actions/buffs/buff_stats.gd" id="1_qcbox"]
+[ext_resource type="Script" uid="uid://4e0rbyciusl2" path="res://src/resources/actions/buffs/buff_data.gd" id="2_falyt"]
+
+[sub_resource type="Resource" id="Resource_xqpu1"]
+script = ExtResource("1_qcbox")
+buff_type = 1
+buff_duration = 4
+metadata/_custom_type_script = "uid://wxhimklyh3te"
+
+[sub_resource type="Resource" id="Resource_bfcwo"]
+script = ExtResource("2_falyt")
+buff_stats = SubResource("Resource_xqpu1")
+name = "Armor"
+description = "Get 1 armor"
+type = 2
+base_strength = 1
+mana_cost = 1
+metadata/_custom_type_script = "uid://4e0rbyciusl2"
+
+[resource]
+script = ExtResource("1_iemxx")
+data = SubResource("Resource_bfcwo")
+metadata/_custom_type_script = "uid://bkrtapdi6avn8"

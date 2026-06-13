@@ -10,6 +10,14 @@ Style
 	https://www.dafont.com/kampung-zombie.font 
 	https://www.dafont.com/times-new-yorker.font
 	https://www.dafont.com/essential.font
+- music:
+	"Virtutes Vocis" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+- dictionary:
+	https://personal.math.ubc.ca/~cass/frivs/latin/latin-dict-full.html
+- images:
+	All images were used under the Unsplash license
 
 Features
 - turn-based combat
@@ -26,21 +34,26 @@ Combat
 - attacks, skills and buffs
 - items with various effects
 - energy based, like in card games
+- player actions:
+	laedo - basic attack
+	impetus - do damage, take damage
+	vulnero - reduce armor
+	contego - shield
+	devoveo - take damage, gain mana
 
 -----
 
 Todo
+POST JAM
 - proper room generation
-- combat
-- backgrounds
-- shop
-- events
-- hud
-- item/equipment class
+- give the player random actions
+- (canceled?) shop
+- (canceled?) events
+- (canceled) item/equipment class
 
 Doing
-- ui theme
-- mana usage
+- build
+- web page
 
 Done
 > 05-25
@@ -90,18 +103,41 @@ Done
 > 06-06
 - health display script
 - description label autosizing
+- mana ui
+- mana usage
 
 > 06-07
-- 
+- bonfire
+- generic weighted list utils
+- action mini rework
+- damage buff
+- armor
+- background switching
+- default background
 
 > 06-08
-- 
+- 2 backgrounds
+- fix armor buffs
+- angry turtle enemy
 
 > 06-09
-- 
+- 2 enemy sprites
+- enemy selection
+- entity stat display
+- fix armor buffs (again)
 
 > 06-10
-- 
+- finish penitent and gargoyle
+- main menu + game loop
+- camera shaking
+- enemy turn timer
+- fade animation
 
 > 06-11
-- 
+- music/sfx
+- fix fade transition
+
+> 06-12
+- player sprite
+- main menu
+- better descriptions

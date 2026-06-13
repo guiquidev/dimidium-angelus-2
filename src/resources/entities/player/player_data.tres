@@ -1,21 +1,25 @@
 [gd_resource type="Resource" script_class="EntityData" format=3 uid="uid://c3n43lwg6ok8r"]
 
-[ext_resource type="Script" uid="uid://dc6prdiklmywd" path="res://src/resources/actions/action_data.gd" id="1_a3o70"]
 [ext_resource type="Script" uid="uid://bnj4qqvshudod" path="res://src/resources/entities/entity_data.gd" id="1_gfj1l"]
-[ext_resource type="Texture2D" uid="uid://b3hbuy08q3bqx" path="res://src/assets/angel_placeholder.png" id="2_bvqy3"]
-[ext_resource type="Resource" uid="uid://cx27fnsl7ldj6" path="res://src/resources/actions/attacks/basic_attack/basic_attack_data.tres" id="2_fy3hq"]
+[ext_resource type="Script" uid="uid://ba8p7fstn3r3u" path="res://src/resources/actions/action.gd" id="1_gwy22"]
+[ext_resource type="Resource" uid="uid://cu6n2evklsfjs" path="res://src/resources/actions/attacks/laedo/laedo.tres" id="2_gwy22"]
 [ext_resource type="Script" uid="uid://dojbtr0wvdk1m" path="res://src/resources/entities/entity_stats.gd" id="3_a3o70"]
+[ext_resource type="Resource" uid="uid://wsbt04fqjccv" path="res://src/resources/actions/attacks/impetus/impetus.tres" id="3_mqrjr"]
+[ext_resource type="Resource" uid="uid://6f0atmhtl4fq" path="res://src/resources/actions/skills/vulnero/vulnero.tres" id="4_3dna4"]
+[ext_resource type="Resource" uid="uid://1nf3x7mm5dje" path="res://src/resources/actions/buffs/contego/contego.tres" id="5_e10nt"]
+[ext_resource type="Texture2D" uid="uid://c5ebhn3728obu" path="res://src/resources/entities/player/player.png" id="6_3dna4"]
+[ext_resource type="Script" uid="uid://wxhimklyh3te" path="res://src/resources/actions/buffs/buff_stats.gd" id="7_3dna4"]
 
 [sub_resource type="Resource" id="Resource_fy3hq"]
 script = ExtResource("3_a3o70")
-max_health = 10
-base_damage = 1
+max_health = 20
 metadata/_custom_type_script = "uid://dojbtr0wvdk1m"
 
 [resource]
 script = ExtResource("1_gfj1l")
 name = "Player"
-sprite = ExtResource("2_bvqy3")
+description = "The Player"
+sprite = ExtResource("6_3dna4")
 stats = SubResource("Resource_fy3hq")
-actions_data = Array[ExtResource("1_a3o70")]([ExtResource("2_fy3hq")])
+actions = Array[ExtResource("1_gwy22")]([ExtResource("2_gwy22"), ExtResource("3_mqrjr"), ExtResource("4_3dna4"), ExtResource("5_e10nt")])
 metadata/_custom_type_script = "uid://bnj4qqvshudod"

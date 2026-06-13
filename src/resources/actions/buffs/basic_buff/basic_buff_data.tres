@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BuffData" format=3 uid="uid://ls4prdhwig6q"]
+
+[ext_resource type="Script" uid="uid://wxhimklyh3te" path="res://src/resources/actions/buffs/buff_stats.gd" id="1_070pu"]
+[ext_resource type="Script" uid="uid://4e0rbyciusl2" path="res://src/resources/actions/buffs/buff_data.gd" id="1_sf1fo"]
+
+[sub_resource type="Resource" id="Resource_w1nmp"]
+script = ExtResource("1_070pu")
+metadata/_custom_type_script = "uid://wxhimklyh3te"
+
+[resource]
+script = ExtResource("1_sf1fo")
+buff_stats = SubResource("Resource_w1nmp")
+name = "Basic Buff"
+description = "Basic Buff Description"
+type = 2
+base_strength = 1
+mana_cost = 1
+metadata/_custom_type_script = "uid://4e0rbyciusl2"

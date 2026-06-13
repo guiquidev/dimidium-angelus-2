@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="BasicBuffAction" format=3 uid="uid://j5044r06mlad"]
+
+[ext_resource type="Script" uid="uid://bkrtapdi6avn8" path="res://src/resources/actions/buffs/basic_buff/basic_buff_action.gd" id="1_2qsie"]
+[ext_resource type="Script" uid="uid://wxhimklyh3te" path="res://src/resources/actions/buffs/buff_stats.gd" id="1_o55tj"]
+[ext_resource type="Script" uid="uid://4e0rbyciusl2" path="res://src/resources/actions/buffs/buff_data.gd" id="2_5lnft"]
+
+[sub_resource type="Resource" id="Resource_scmyb"]
+script = ExtResource("1_o55tj")
+buff_duration = 5
+metadata/_custom_type_script = "uid://wxhimklyh3te"
+
+[sub_resource type="Resource" id="Resource_ybxbq"]
+script = ExtResource("2_5lnft")
+buff_stats = SubResource("Resource_scmyb")
+name = "Pray (Buff)"
+description = "Damage increase from praying"
+type = 2
+base_strength = 1
+metadata/_custom_type_script = "uid://4e0rbyciusl2"
+
+[resource]
+script = ExtResource("1_2qsie")
+data = SubResource("Resource_ybxbq")
+metadata/_custom_type_script = "uid://bkrtapdi6avn8"

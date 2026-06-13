@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BasicAttackAction" format=3 uid="uid://d12dixrs18838"]
+
+[ext_resource type="Script" uid="uid://con8614k2qmfq" path="res://src/resources/actions/attacks/basic_attack/basic_attack_action.gd" id="1_jun60"]
+[ext_resource type="Script" uid="uid://dc6prdiklmywd" path="res://src/resources/actions/action_data.gd" id="1_ud5t8"]
+
+[sub_resource type="Resource" id="Resource_fg107"]
+script = ExtResource("1_ud5t8")
+name = "Punch"
+description = "Solves most of the problems"
+action_target = 1
+base_strength = 1
+mana_cost = 1
+metadata/_custom_type_script = "uid://dc6prdiklmywd"
+
+[resource]
+script = ExtResource("1_jun60")
+data = SubResource("Resource_fg107")
+metadata/_custom_type_script = "uid://con8614k2qmfq"

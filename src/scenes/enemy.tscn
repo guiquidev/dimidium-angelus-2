@@ -2,13 +2,20 @@
 
 [ext_resource type="Script" uid="uid://d1qedop3pjthc" path="res://src/resources/entities/enemies/enemy.gd" id="1_e1bd7"]
 [ext_resource type="PackedScene" uid="uid://dnqo6rslvcxlo" path="res://src/scenes/ui/description_panel.tscn" id="2_43hrp"]
+[ext_resource type="Resource" uid="uid://d2urp0crbl13u" path="res://src/resources/entities/enemies/placeholder_enemy.tres" id="2_qedtn"]
 [ext_resource type="Theme" uid="uid://csqkbn2ap2ti0" path="res://src/resources/ui/ui_theme.tres" id="2_x0mr8"]
+[ext_resource type="Texture2D" uid="uid://cs2t21s3ghtbl" path="res://src/assets/img/shadow.png" id="3_uaspr"]
+[ext_resource type="PackedScene" uid="uid://dxmbtf2dysrlt" path="res://src/scenes/ui/entity_stats_display.tscn" id="6_k517k"]
 
 [node name="Enemy" type="Node2D" unique_id=2039990916 node_paths=PackedStringArray("description_panel", "sprite", "name_label")]
 script = ExtResource("1_e1bd7")
-description_panel = NodePath("Panel")
+description_panel = NodePath("DescriptionPanel")
 sprite = NodePath("Sprite2D")
 name_label = NodePath("Name")
+data = ExtResource("2_qedtn")
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1868337179]
+texture = ExtResource("3_uaspr")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=696565438]
 
@@ -29,9 +36,19 @@ text = "Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Panel" parent="." unique_id=1111386767 instance=ExtResource("2_43hrp")]
+[node name="DescriptionPanel" parent="." unique_id=1111386767 instance=ExtResource("2_43hrp")]
 offset_left = -125.0
 offset_top = -250.0
 offset_right = 125.0
 offset_bottom = 50.0
 hover_description = "Enemy"
+
+[node name="EntityStatsDisplay" parent="." unique_id=184518670 node_paths=PackedStringArray("entity") instance=ExtResource("6_k517k")]
+offset_left = 98.0
+offset_top = -199.0
+offset_right = 198.0
+offset_bottom = -99.0
+entity = NodePath("..")
+
+[connection signal="buff_changed" from="." to="EntityStatsDisplay" method="on_entity_buff_changed"]
+[connection signal="health_changed" from="." to="EntityStatsDisplay" method="on_entity_health_changed"]

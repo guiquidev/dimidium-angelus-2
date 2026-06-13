@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="BasicAttackAction" format=3 uid="uid://wsbt04fqjccv"]
+
+[ext_resource type="Script" uid="uid://con8614k2qmfq" path="res://src/resources/actions/attacks/basic_attack/basic_attack_action.gd" id="1_2lku4"]
+[ext_resource type="Script" uid="uid://dc6prdiklmywd" path="res://src/resources/actions/action_data.gd" id="1_hlnln"]
+
+[sub_resource type="Resource" id="Resource_su6or"]
+script = ExtResource("1_hlnln")
+name = "Impetus"
+description = "Hurt the enemy, but also hurt yourself"
+action_target = 1
+base_strength = 5
+mana_cost = 4
+metadata/_custom_type_script = "uid://dc6prdiklmywd"
+
+[sub_resource type="Resource" id="Resource_8mypv"]
+script = ExtResource("1_hlnln")
+name = "Impetus II"
+base_strength = 2
+metadata/_custom_type_script = "uid://dc6prdiklmywd"
+
+[sub_resource type="Resource" id="Resource_yyhua"]
+script = ExtResource("1_2lku4")
+data = SubResource("Resource_8mypv")
+metadata/_custom_type_script = "uid://con8614k2qmfq"
+
+[resource]
+script = ExtResource("1_2lku4")
+data = SubResource("Resource_su6or")
+next_action = SubResource("Resource_yyhua")
+metadata/_custom_type_script = "uid://con8614k2qmfq"

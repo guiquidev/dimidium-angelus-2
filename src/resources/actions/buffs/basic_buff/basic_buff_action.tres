@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BasicBuffAction" format=3 uid="uid://fcxsegf0kvyj"]
+
+[ext_resource type="Resource" uid="uid://ls4prdhwig6q" path="res://src/resources/actions/buffs/basic_buff/basic_buff_data.tres" id="1_6fe2g"]
+[ext_resource type="Script" uid="uid://bkrtapdi6avn8" path="res://src/resources/actions/buffs/basic_buff/basic_buff_action.gd" id="1_pwi0h"]
+
+[resource]
+script = ExtResource("1_pwi0h")
+data = ExtResource("1_6fe2g")
+metadata/_custom_type_script = "uid://bkrtapdi6avn8"

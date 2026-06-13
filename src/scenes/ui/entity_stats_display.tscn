@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dxmbtf2dysrlt"]
+
+[ext_resource type="Texture2D" uid="uid://dqy5sv67pj63w" path="res://src/assets/img/info.png" id="1_hg31h"]
+[ext_resource type="Script" uid="uid://c6qy7i1gee52b" path="res://src/resources/entities/entity_stats_display.gd" id="2_4hlu6"]
+
+[node name="EntityStatsDisplay" type="TextureRect" unique_id=184518670 groups=["hoverable"]]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_hg31h")
+script = ExtResource("2_4hlu6")
+buffs_to_display = Array[int]([0, 1])
+buff_display_name = Dictionary[int, String]({
+0: "Additional Damage",
+1: "Armor"
+})

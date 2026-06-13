@@ -3,30 +3,106 @@
 [ext_resource type="Script" uid="uid://g3bq1a7bmrih" path="res://src/scripts/rooms/room_manager.gd" id="1_kokaf"]
 [ext_resource type="Script" uid="uid://bp3u61ily7fbx" path="res://src/scripts/game_manager.gd" id="1_lp058"]
 [ext_resource type="Script" uid="uid://deed62mrnq5bj" path="res://src/scripts/rooms/combat_room.gd" id="1_rr2wm"]
-[ext_resource type="Resource" uid="uid://d2urp0crbl13u" path="res://src/resources/entities/enemies/placeholder_enemy.tres" id="3_5dlwx"]
+[ext_resource type="Texture2D" uid="uid://dfif5yt8gwbe2" path="res://src/assets/img/backgrounds/cave.png" id="2_ccybt"]
+[ext_resource type="Script" uid="uid://ckv5fye857omv" path="res://src/scripts/camera_manager.gd" id="2_j04uq"]
+[ext_resource type="AudioStream" uid="uid://d1o0dqx0onkx5" path="res://src/assets/audio/music/Virtutes Vocis.mp3" id="2_tx8mq"]
+[ext_resource type="Script" uid="uid://b8mxb7a1lpfjc" path="res://src/scripts/audio_manager.gd" id="2_xxm0n"]
+[ext_resource type="AudioStream" uid="uid://h4bf4nu7vuk6" path="res://src/assets/audio/sfx/skill.wav" id="3_7opv2"]
+[ext_resource type="Texture2D" uid="uid://bhd2bdjv2yah" path="res://src/assets/img/backgrounds/default.png" id="3_50ugh"]
 [ext_resource type="PackedScene" uid="uid://dp56l7pbomsi6" path="res://src/scenes/player.tscn" id="4_dbro3"]
+[ext_resource type="AudioStream" uid="uid://ctmba4amhwkiy" path="res://src/assets/audio/sfx/hurt.wav" id="4_h8ax2"]
 [ext_resource type="PackedScene" uid="uid://b3p3pdyt1xblc" path="res://src/scenes/enemy.tscn" id="4_o81g6"]
 [ext_resource type="Script" uid="uid://beh8bne78eady" path="res://src/resources/actions/action_resolver.gd" id="5_2lg1k"]
+[ext_resource type="AudioStream" uid="uid://blwg0i67t5dbk" path="res://src/assets/audio/sfx/buff.wav" id="5_r0lsc"]
+[ext_resource type="AudioStream" uid="uid://cto0uk2ec0rkl" path="res://src/assets/audio/sfx/no_mana.wav" id="6_am227"]
+[ext_resource type="Texture2D" uid="uid://c3u6wm0xnp8xe" path="res://src/assets/img/backgrounds/bridge.png" id="7_lcp4o"]
+[ext_resource type="Texture2D" uid="uid://g6ocwt5m7kst" path="res://src/assets/img/backgrounds/liminal_aquarium.png" id="7_yk6rd"]
+[ext_resource type="Script" uid="uid://bnj4qqvshudod" path="res://src/resources/entities/entity_data.gd" id="8_htxff"]
 [ext_resource type="Script" uid="uid://b1i4ob2wuk1ne" path="res://src/scripts/rooms/shop_room.gd" id="9_24j03"]
 [ext_resource type="Script" uid="uid://bngf6g60xl0jq" path="res://src/scripts/rooms/event_room.gd" id="10_p1ia5"]
+[ext_resource type="Resource" uid="uid://dds86txa0ovwe" path="res://src/resources/entities/enemies/gargoyle/gargoyle.tres" id="10_v252j"]
 [ext_resource type="Script" uid="uid://cnmuh2rtkjp60" path="res://src/scripts/rooms/bonfire_room.gd" id="11_kbdt0"]
 [ext_resource type="Script" uid="uid://dmxlivx47wejc" path="res://src/scripts/ui/game_ui_manager.gd" id="12_ccybt"]
 [ext_resource type="Theme" uid="uid://csqkbn2ap2ti0" path="res://src/resources/ui/ui_theme.tres" id="13_4rjby"]
 [ext_resource type="Script" uid="uid://dfgsb2evwk6l0" path="res://src/scripts/ui/description_panel.gd" id="13_50ugh"]
 [ext_resource type="PackedScene" uid="uid://dtcg82k4g3ve2" path="res://src/scenes/ui/player_ui_manager.tscn" id="15_50ugh"]
+[ext_resource type="Resource" uid="uid://bn7hrgwxfh01m" path="res://src/resources/entities/enemies/angry_turtle/angry_turtle.tres" id="17_h8ax2"]
+[ext_resource type="Resource" uid="uid://y6kq04fj6yji" path="res://src/resources/entities/enemies/penitent/penitent.tres" id="18_r0lsc"]
+[ext_resource type="Script" uid="uid://fpla06e0qgjv" path="res://src/globals/transition_manager.gd" id="24_tyryd"]
+[ext_resource type="Texture2D" uid="uid://c5ebhn3728obu" path="res://src/resources/entities/player/player.png" id="26_2sd1y"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_kkvs4"]
+[sub_resource type="Animation" id="Animation_n75dp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
-[node name="Main" type="Node2D" unique_id=761405414 node_paths=PackedStringArray("room_manager", "player")]
+[sub_resource type="Animation" id="Animation_j04uq"]
+resource_name = "shake"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999964, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tyryd"]
+_data = {
+&"RESET": SubResource("Animation_n75dp"),
+&"shake": SubResource("Animation_j04uq")
+}
+
+[node name="Main" type="Node2D" unique_id=761405414 node_paths=PackedStringArray("title_screen", "win_screen", "lose_screen", "player", "room_manager", "transition_manager")]
 script = ExtResource("1_lp058")
+title_screen = NodePath("TitleScreen")
+win_screen = NodePath("WinScreen")
+lose_screen = NodePath("LoseScreen")
+player = NodePath("Rooms/Combat/Entities/Player")
 room_manager = NodePath("Rooms")
-player = NodePath("Rooms/Combat/PlayerNode/Player")
+transition_manager = NodePath("Transition")
 
-[node name="Background" type="Sprite2D" parent="." unique_id=1941198815]
-modulate = Color(0.5130417, 0.15986297, 0.20790896, 1)
-position = Vector2(640, 360)
-scale = Vector2(1280, 720)
-texture = SubResource("CanvasTexture_kkvs4")
+[node name="Audio" type="Node" parent="." unique_id=2065959675]
+script = ExtResource("2_xxm0n")
+audio_by_type = Dictionary[int, AudioStream]({
+0: ExtResource("4_h8ax2"),
+1: ExtResource("3_7opv2"),
+2: ExtResource("5_r0lsc"),
+3: ExtResource("6_am227")
+})
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="Audio" unique_id=1122089352]
+stream = ExtResource("2_tx8mq")
+volume_db = -11.0
+autoplay = true
+parameters/looping = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1627200684 node_paths=PackedStringArray("animation_player")]
+offset = Vector2(640, 360)
+limit_enabled = false
+limit_left = 0
+limit_top = 0
+script = ExtResource("2_j04uq")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D" unique_id=1159917373]
+libraries/ = SubResource("AnimationLibrary_tyryd")
+speed_scale = 3.0
 
 [node name="Rooms" type="Node2D" parent="." unique_id=1947204029 node_paths=PackedStringArray("rooms_by_type", "continue_button")]
 script = ExtResource("1_kokaf")
@@ -39,42 +115,57 @@ rooms_by_type = {
 }
 rooms_weights = Dictionary[int, int]({
 0: 5,
-1: 2,
+1: 0,
 2: 1,
-3: 3
+3: 0
 })
 continue_button = NodePath("../GameUI/BottomSection/MarginContainerContinue/ContinueButton")
 
-[node name="Combat" type="Node2D" parent="Rooms" unique_id=1725202512 node_paths=PackedStringArray("player", "enemy", "end_turn_button", "action_resolver")]
+[node name="DefaultBackground" type="Sprite2D" parent="Rooms" unique_id=36322514]
+position = Vector2(640, 360)
+texture = ExtResource("3_50ugh")
+
+[node name="Combat" type="Node2D" parent="Rooms" unique_id=1725202512 node_paths=PackedStringArray("background", "player", "enemy", "enemy_turn_timer", "end_turn_button", "action_resolver")]
 script = ExtResource("1_rr2wm")
-player = NodePath("PlayerNode/Player")
-enemy = NodePath("EnemyNode/Enemy")
-enemy_data = ExtResource("3_5dlwx")
+background = NodePath("Background")
+background_textures = Array[Texture2D]([ExtResource("7_lcp4o"), ExtResource("7_yk6rd"), ExtResource("2_ccybt")])
+player = NodePath("Entities/Player")
+enemy = NodePath("Entities/Enemy")
+enemy_data = Array[ExtResource("8_htxff")]([ExtResource("10_v252j"), ExtResource("17_h8ax2"), ExtResource("18_r0lsc")])
+enemy_turn_timer = NodePath("EnemyTurnTimer")
 end_turn_button = NodePath("../../GameUI/BottomSection/MarginContainerBottom/Bottom/Details/MarginContainer/VBoxContainer/EndTurnButton")
 action_resolver = NodePath("ActionResolver")
 
-[node name="ActionResolver" type="Node" parent="Rooms/Combat" unique_id=1932610371]
-script = ExtResource("5_2lg1k")
-
-[node name="EnemyNode" type="Node2D" parent="Rooms/Combat" unique_id=538237329]
-position = Vector2(1038, 434)
-
-[node name="Enemy" parent="Rooms/Combat/EnemyNode" unique_id=2039990916 instance=ExtResource("4_o81g6")]
+[node name="Background" type="Sprite2D" parent="Rooms/Combat" unique_id=1941198815]
 visible = false
+position = Vector2(640, 360)
 
-[node name="PlayerNode" type="Node2D" parent="Rooms/Combat" unique_id=876074291]
-position = Vector2(274, 420)
+[node name="ActionResolver" type="Node" parent="Rooms/Combat" unique_id=1932610371 node_paths=PackedStringArray("audio_manager")]
+script = ExtResource("5_2lg1k")
+audio_manager = NodePath("../../../Audio")
 
-[node name="Player" parent="Rooms/Combat/PlayerNode" unique_id=185920088 instance=ExtResource("4_dbro3")]
+[node name="EnemyTurnTimer" type="Timer" parent="Rooms/Combat" unique_id=29641073]
+
+[node name="Entities" type="Node2D" parent="Rooms/Combat" unique_id=424518495]
+
+[node name="Player" parent="Rooms/Combat/Entities" unique_id=185920088 node_paths=PackedStringArray("audio_manager") instance=ExtResource("4_dbro3")]
+position = Vector2(240, 494)
+audio_manager = NodePath("../../../../Audio")
+
+[node name="Enemy" parent="Rooms/Combat/Entities" unique_id=2039990916 instance=ExtResource("4_o81g6")]
+visible = false
+position = Vector2(959, 477)
 
 [node name="Shop" type="Node2D" parent="Rooms" unique_id=1456505968]
 script = ExtResource("9_24j03")
 room_type = 1
 
-[node name="Bonfire" type="Node2D" parent="Rooms" unique_id=1428629708 node_paths=PackedStringArray("bonfire_ui", "player")]
+[node name="Bonfire" type="Node2D" parent="Rooms" unique_id=1428629708 node_paths=PackedStringArray("bonfire_ui", "player", "heal_button")]
 script = ExtResource("11_kbdt0")
 bonfire_ui = NodePath("../../GameUI/BonfireUI")
-player = NodePath("../Combat/PlayerNode/Player")
+player = NodePath("../Combat/Entities/Player")
+heal_button = NodePath("../../GameUI/BonfireUI/Panel/MarginContainer/VBoxContainer/HealButton")
+heal_amount = 6
 room_type = 2
 
 [node name="Event" type="Node2D" parent="Rooms" unique_id=1438195118]
@@ -146,10 +237,11 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 40
-text = "You can heal here"
+text = "- Requiesco- 
+Rest and recover from your wounds"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="GameUI/BonfireUI/Panel/MarginContainer/VBoxContainer" unique_id=1683791341]
+[node name="HealButton" type="Button" parent="GameUI/BonfireUI/Panel/MarginContainer/VBoxContainer" unique_id=1683791341]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -157,7 +249,7 @@ size_flags_vertical = 4
 text = "Heal"
 
 [node name="BottomSection" type="VBoxContainer" parent="GameUI" unique_id=1375259608]
-custom_minimum_size = Vector2(0, 300)
+custom_minimum_size = Vector2(0, 280)
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -207,23 +299,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HealthLabel" type="Label" parent="GameUI/BottomSection/MarginContainerBottom/Bottom/PlayerStatus/MarginContainer" unique_id=717706618]
-visible = false
-layout_mode = 2
-text = "Current Health"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ManaLabel" type="Label" parent="GameUI/BottomSection/MarginContainerBottom/Bottom/PlayerStatus/MarginContainer" unique_id=635612293]
-visible = false
-layout_mode = 2
-text = "Current Mana"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="PlayerUIManager" parent="GameUI/BottomSection/MarginContainerBottom/Bottom/PlayerStatus/MarginContainer" unique_id=1566111044 node_paths=PackedStringArray("player", "actions_container", "game_ui_manager") instance=ExtResource("15_50ugh")]
 layout_mode = 2
-player = NodePath("../../../../../../../Rooms/Combat/PlayerNode/Player")
+player = NodePath("../../../../../../../Rooms/Combat/Entities/Player")
 actions_container = NodePath("../../../Actions/MarginContainer/ActionsContainer")
 game_ui_manager = NodePath("../../../../../..")
 
@@ -266,6 +344,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/line_spacing = -8
 autowrap_mode = 3
 
 [node name="EndTurnButton" type="Button" parent="GameUI/BottomSection/MarginContainerBottom/Bottom/Details/MarginContainer/VBoxContainer" unique_id=1237209805]
@@ -276,10 +355,207 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
 text = "End Turn"
 
-[connection signal="action_executed" from="Rooms/Combat/EnemyNode/Enemy" to="Rooms/Combat" method="execute_action"]
-[connection signal="action_added" from="Rooms/Combat/PlayerNode/Player" to="GameUI/BottomSection/MarginContainerBottom/Bottom/PlayerStatus/MarginContainer/PlayerUIManager" method="on_action_added"]
-[connection signal="action_executed" from="Rooms/Combat/PlayerNode/Player" to="Rooms/Combat" method="execute_action"]
-[connection signal="health_changed" from="Rooms/Combat/PlayerNode/Player" to="GameUI/BottomSection/MarginContainerBottom/Bottom/PlayerStatus/MarginContainer/PlayerUIManager" method="on_health_changed"]
-[connection signal="pressed" from="GameUI/BonfireUI/Panel/MarginContainer/VBoxContainer/Button" to="Rooms/Bonfire" method="_on_button_pressed"]
+[node name="TitleScreen" type="CanvasLayer" parent="." unique_id=645581461]
+layer = 2
+
+[node name="Background" type="TextureRect" parent="TitleScreen" unique_id=687051741]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_50ugh")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TitleScreen" unique_id=1559541024]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainerLeft" type="MarginContainer" parent="TitleScreen/HBoxContainer" unique_id=1004438468]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 200
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/HBoxContainer/MarginContainerLeft" unique_id=58883848]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="TitleScreen/HBoxContainer/MarginContainerLeft/VBoxContainer" unique_id=915420348]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("13_4rjby")
+theme_override_constants/line_spacing = -30
+theme_override_font_sizes/font_size = 100
+text = "DIMIDIUM
+ANGELUS
+2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="JamNote" type="Label" parent="TitleScreen/HBoxContainer/MarginContainerLeft/VBoxContainer" unique_id=1612545650]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("13_4rjby")
+text = "(Noise Jam Edition)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="Button" parent="TitleScreen/HBoxContainer/MarginContainerLeft/VBoxContainer" unique_id=57491515]
+layout_mode = 2
+theme = ExtResource("13_4rjby")
+theme_override_font_sizes/font_size = 60
+text = "PLAY"
+
+[node name="MarginContainerRight" type="MarginContainer" parent="TitleScreen/HBoxContainer" unique_id=330634018]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CoverImage" type="TextureRect" parent="TitleScreen/HBoxContainer/MarginContainerRight" unique_id=2079851517]
+layout_mode = 2
+texture = ExtResource("26_2sd1y")
+stretch_mode = 1
+
+[node name="WinScreen" type="CanvasLayer" parent="." unique_id=1832201819]
+layer = 2
+visible = false
+
+[node name="Background" type="TextureRect" parent="WinScreen" unique_id=881309031]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_50ugh")
+
+[node name="MarginContainer" type="MarginContainer" parent="WinScreen" unique_id=1786418284]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinScreen/MarginContainer" unique_id=233304347]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WinText" type="Label" parent="WinScreen/MarginContainer/VBoxContainer" unique_id=1376497472]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("13_4rjby")
+theme_override_font_sizes/font_size = 100
+text = "You ascended to heaven
+Or so you thought..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="WinScreen/MarginContainer/VBoxContainer" unique_id=164935626]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.5
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 0
+
+[node name="ReplayButton" type="Button" parent="WinScreen/MarginContainer/VBoxContainer/MarginContainer" unique_id=337449537]
+layout_mode = 2
+theme = ExtResource("13_4rjby")
+theme_override_font_sizes/font_size = 50
+text = "TRY AGAIN"
+
+[node name="LoseScreen" type="CanvasLayer" parent="." unique_id=380281071]
+layer = 2
+visible = false
+
+[node name="Background" type="TextureRect" parent="LoseScreen" unique_id=978964049]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_50ugh")
+
+[node name="MarginContainer" type="MarginContainer" parent="LoseScreen" unique_id=1640802699]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LoseScreen/MarginContainer" unique_id=2095045301]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LoseText" type="Label" parent="LoseScreen/MarginContainer/VBoxContainer" unique_id=1102304922]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("13_4rjby")
+theme_override_font_sizes/font_size = 100
+text = "Once again, you fell
+What awaits you on the other side
+remains a mistery"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="LoseScreen/MarginContainer/VBoxContainer" unique_id=1007324887]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.5
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 0
+
+[node name="ReplayButton" type="Button" parent="LoseScreen/MarginContainer/VBoxContainer/MarginContainer" unique_id=1178930716]
+layout_mode = 2
+theme = ExtResource("13_4rjby")
+theme_override_font_sizes/font_size = 50
+text = "LET ME OUT!"
+
+[node name="Transition" type="CanvasLayer" parent="." unique_id=2054708293 node_paths=PackedStringArray("screen_cover")]
+layer = 3
+script = ExtResource("24_tyryd")
+screen_cover = NodePath("ScreenCover")
+fade_in_duration = 1.0
+fade_out_duration = 1.0
+fade_out_color = Color(0, 0, 0, 0)
+
+[node name="ScreenCover" type="ColorRect" parent="Transition" unique_id=1821603600]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="rooms_cleared" from="Rooms" to="." method="win_game"]
+[connection signal="player_died" from="Rooms/Combat" to="." method="lose_game"]
+[connection signal="action_added" from="Rooms/Combat/Entities/Player" to="GameUI/BottomSection/MarginContainerBottom/Bottom/PlayerStatus/MarginContainer/PlayerUIManager" method="on_action_added"]
+[connection signal="action_executed" from="Rooms/Combat/Entities/Player" to="Rooms/Combat" method="execute_action"]
+[connection signal="health_changed" from="Rooms/Combat/Entities/Player" to="Camera2D" method="_on_player_health_changed"]
+[connection signal="health_changed" from="Rooms/Combat/Entities/Player" to="GameUI/BottomSection/MarginContainerBottom/Bottom/PlayerStatus/MarginContainer/PlayerUIManager" method="on_health_changed"]
+[connection signal="mana_changed" from="Rooms/Combat/Entities/Player" to="GameUI/BottomSection/MarginContainerBottom/Bottom/PlayerStatus/MarginContainer/PlayerUIManager" method="on_mana_changed"]
+[connection signal="action_executed" from="Rooms/Combat/Entities/Enemy" to="Rooms/Combat" method="execute_action"]
+[connection signal="pressed" from="GameUI/BonfireUI/Panel/MarginContainer/VBoxContainer/HealButton" to="Rooms/Bonfire" method="_on_button_pressed"]
 [connection signal="pressed" from="GameUI/BottomSection/MarginContainerContinue/ContinueButton" to="Rooms" method="_on_continue_button_pressed"]
-[connection signal="pressed" from="GameUI/BottomSection/MarginContainerBottom/Bottom/Details/MarginContainer/VBoxContainer/EndTurnButton" to="Rooms" method="_on_continue_button_pressed"]
+[connection signal="pressed" from="GameUI/BottomSection/MarginContainerBottom/Bottom/Details/MarginContainer/VBoxContainer/EndTurnButton" to="Rooms/Combat" method="_on_end_turn_button_pressed"]
+[connection signal="pressed" from="TitleScreen/HBoxContainer/MarginContainerLeft/VBoxContainer/PlayButton" to="." method="start_game"]
+[connection signal="pressed" from="WinScreen/MarginContainer/VBoxContainer/MarginContainer/ReplayButton" to="." method="restart_game"]
+[connection signal="pressed" from="LoseScreen/MarginContainer/VBoxContainer/MarginContainer/ReplayButton" to="." method="restart_game"]

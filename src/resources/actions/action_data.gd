@@ -5,7 +5,6 @@ class_name ActionData
 @export var description: String
 @export var type: Enums.ActionType
 @export var action_target: Enums.ActionTarget
-@export var strength: int
-@export var next_action: ActionData
+@export var base_strength: int
+@export var mana_cost: int
 @export var icon: Texture2D
-@export var action: Action

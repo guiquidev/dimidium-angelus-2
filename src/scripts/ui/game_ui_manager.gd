@@ -32,15 +32,15 @@ func connect_hover_signals(node: Node):
 
 func get_font_size(text: String) -> int:
 	if text.length() > 200:
-		return 20
+		return 19
 	if text.length() > 150:
 		return 23
 	if text.length() > 100:
-		return 27
+		return 25
 	if text.length() > 75:
-		return 30
+		return 28
 	
-	return 35
+	return 30
 
 
 func on_node_hovered_in(node: Node):

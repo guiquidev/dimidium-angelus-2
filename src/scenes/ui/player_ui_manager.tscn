@@ -6,14 +6,44 @@
 [ext_resource type="PackedScene" uid="uid://cmdiymil0hyq1" path="res://src/scenes/ui/base_button.tscn" id="2_qpnqj"]
 [ext_resource type="Texture2D" uid="uid://bv8he4383kw82" path="res://src/assets/img/health_display/orb_health_cut.png" id="3_jli8a"]
 [ext_resource type="PackedScene" uid="uid://dnqo6rslvcxlo" path="res://src/scenes/ui/description_panel.tscn" id="6_2horx"]
+[ext_resource type="Texture2D" uid="uid://cpd1u6wu8jxga" path="res://src/assets/img/mana_bar/mana_bar_background.png" id="7_nxypd"]
+[ext_resource type="Texture2D" uid="uid://dff3nc50srobh" path="res://src/assets/img/mana_bar/mana_bar.png" id="8_yfhly"]
 
-[node name="PlayerUIManager" type="Control" unique_id=887361964 node_paths=PackedStringArray("health_progress", "health_description_panel")]
+[node name="PlayerUIManager" type="Control" unique_id=887361964 node_paths=PackedStringArray("health_progress", "health_description_panel", "mana_progress", "mana_description_panel")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_p7iid")
 base_action_button = ExtResource("2_qpnqj")
 health_progress = NodePath("HealthBar")
 health_description_panel = NodePath("HealthBar/HealthDescription")
+mana_progress = NodePath("ManaBar")
+mana_description_panel = NodePath("ManaBar/ManaDescription")
+
+[node name="ManaBar" type="TextureProgressBar" parent="." unique_id=1742653509]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 35.0
+offset_right = 100.0
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_under = ExtResource("7_nxypd")
+texture_progress = ExtResource("8_yfhly")
+texture_progress_offset = Vector2(11, 17)
+
+[node name="ManaDescription" parent="ManaBar" unique_id=1111386767 instance=ExtResource("6_2horx")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+hover_description = "Player Mana"
 
 [node name="HealthBar" type="TextureProgressBar" parent="." unique_id=1016364152]
 layout_mode = 1
@@ -28,6 +58,7 @@ offset_right = 101.0
 offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 value = 100.0
 fill_mode = 3
 texture_under = ExtResource("1_jli8a")
@@ -35,7 +66,7 @@ texture_over = ExtResource("2_p7iid")
 texture_progress = ExtResource("3_jli8a")
 texture_progress_offset = Vector2(51, 29)
 
-[node name="HealthDescription" parent="HealthBar" unique_id=1111386767 instance=ExtResource("6_2horx")]
+[node name="HealthDescription" parent="HealthBar" unique_id=948181934 instance=ExtResource("6_2horx")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,4 +76,4 @@ offset_right = -14.0
 offset_bottom = -56.0
 grow_horizontal = 2
 grow_vertical = 2
-hover_description = "Player health"
+hover_description = "Player Health"
